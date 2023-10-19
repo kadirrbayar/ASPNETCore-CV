@@ -1,0 +1,52 @@
+﻿@using EntityLayer.Concrete
+@model List<Announcement>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+    string color = "";
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">DUYURULAR</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Başlık</th>
+                                <th>Tarih</th>
+                                <th>Tür</th>
+                                <th>Detaylar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                if (item.Type == "Yeni Video")
+                                    color = "badge badge-danger";
+                                else if (item.Type == "Yeni Yazı")
+                                    color = "badge badge-info";
+                                else if (item.Type == "Yeni Proje")
+                                    color = "badge badge-success";
+                                else if (item.Type == "Yeni Makale")
+                                    color = "badge badge-warning";
+
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Date</td>
+                                    <td><label class="@color">@item.Type</label></td>
+                                    <td><a href="/Writer/Default/AnnouncementDetails/@item.Id" class="btn btn-outline-primary">Detaylar</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

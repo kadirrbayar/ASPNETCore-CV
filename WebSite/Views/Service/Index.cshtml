@@ -1,0 +1,45 @@
+﻿@using EntityLayer.Concrete
+@model List<Service>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Hizmetler Tablosu</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Başlık</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ServiceId</td>
+                                    <td>@item.Title</td>
+                                    <td>
+                                        <a href="/Service/ServiceDelete/@item.ServiceId" class="btn btn-outline-danger">Sil</a>
+                                    </td>
+                                    <td>
+                                        <a href="/Service/ServiceEdit/@item.ServiceId" class="btn btn-outline-success">Güncelle</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <br />
+                <a href="/Service/ServiceAdd" class="btn btn-primary">Yeni Kayıt Ekle</a>
+            </div>
+        </div>
+    </div>
+</div>

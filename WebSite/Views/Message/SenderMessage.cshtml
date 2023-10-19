@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "SenderMessage";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+}
+
+@using EntityLayer.Concrete
+@model List<WriterMessage>
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Giden Kutusu</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Konu</th>
+                                <th>Alıcı</th>
+                                <th>Tarih</th>
+                                <th>Mesaj</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.MessageId</td>
+                                    <td>@item.Subject</td>
+                                    <td>@item.ReceiverName</td>
+                                    <td>@item.Date.ToShortDateString()</td>
+                                    <td>@item.Content.Substring(0,Math.Min(item.Content.Length,20))...</td>
+                                    <td>
+                                        <a href="/Message/MessageDelete/@item.MessageId" class="btn btn-outline-danger">Sil</a>
+                                    </td>
+                                    <td>
+                                        <a href="/Message/MessageDetails/@item.MessageId" class="btn btn-outline-success">Mesajı Gör</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <br />
+                <a href="/Message/MessageAdd" class="btn btn-primary">Yeni Mesaj Yaz</a>
+                <a href="/Message/ReceiverMessage" class="btn btn-warning">Gelen Kutusu</a>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+}
+
+<div class="col col-md-6">
+    <button type="button" class="btn btn-outline-success" id="listexperience">Verileri Getir</button>
+</div>
+<br />
+
+<div class="row" id="experienceList"></div>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Deneyim Ekleme Paneli</h4>
+                <div class="form-group">
+                    <label>Deneyim Başlığı</label>
+                    <input type="text" class="form-control" name="Name" id="Name" placeholder="Şirket Adı" />
+                </div>
+                <div class="form-group">
+                    <label>Tarih</label>
+                    <input type="text" class="form-control" name="Date" id="Date" placeholder="Tarih" />
+                </div>
+                <div class="form-group">
+                    <label>Image Url</label>
+                    <input type="text" class="form-control" name="ImageUrl" id="ImageUrl" placeholder="Görsel Yolu" />
+                </div>
+                <div class="form-group">
+                    <label>Açıklama</label>
+                    <input type="text" class="form-control" name="Description" id="Description" placeholder="Açıklama" />
+                </div>
+                <button type="button" class="btn btn-danger" id="addexperience">Ekle</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $("#listexperience").click(function () {
+            $.ajax({
+                type: "get",
+                url: "/Experience2/ListExperience/",
+                contentType: "application/json",
+                dataType: "JSON",
+                success: function (r) {
+                    let users = JSON.parse(r)
+                    let htmlst = '<div class="col-lg-12 grid-margin stretch-card"><div class="card"><div class="card-body"><div class="table-responsive">';
+                    htmlst += "<table class=table><thead><tr><th>#</th><th> Şirket </th><th> Tarih </th><th> Açıklama </th><th> Sil </th></tr></thead><tbody>";
+                    $.each(users, (index, value) => {
+                        htmlst += '<tr>';
+                        htmlst += '<td>' + value.ExperienceId + '</td>';
+                        htmlst += '<td>' + value.Name + '</td>';
+                        htmlst += '<td>' + value.Date + '</td>';
+                        htmlst += '<td>' + value.Description.substr(0, Math.min(value.Description.length, 22)) + '...</td>';
+                        htmlst += '<td><button type="button" class="btn btn-outline-primary delete-experience" data-id="' + value.ExperienceId + '">Sil</button></td>';
+                        htmlst += '</tr>';
+                    });
+                    htmlst += '</tbody>';
+                    htmlst += '</table>';
+                    htmlst += '</div></div></div></div>';
+                    $("#experienceList").html(htmlst);
+                }
+            });
+        });
+        $("#addexperience").click(function () {
+            let name = $("#Name").val();
+            let date = $("#Date").val();
+            let imageUrl = $("#ImageUrl").val();
+            let description = $("#Description").val();
+            if (!name || !date || !imageUrl || !description) {
+                alert("Tüm alanları doldurmalısınız!");
+            } else {
+                let values = {
+                    Name: name,
+                    Date: date,
+                    ImageUrl: imageUrl,
+                    Description: description
+                };
+                $.ajax({
+                    type: "post",
+                    url: "/Experience2/AddExperience/",
+                    data: values,
+                    success: function (r) {
+                        let result = JSON.parse(r);
+                        alert("Kayıt başarıyla eklendi");
+                        $("#Name").val("");
+                        $("#Date").val("");
+                        $("#ImageUrl").val("");
+                        $("#Description").val("");
+                        $("#listexperience").trigger("click");
+                    }
+                });
+            }
+        });
+        $("#experienceList").on("click", ".delete-experience", function () {
+            let id = $(this).data("id");
+            if (confirm("Bu deneyimi silmek istediğinizden emin misiniz?")) {
+                $.ajax({
+                    type: "post",
+                    url: "/Experience2/DeleteExperience/" + id,
+                    contentType: "application/json",
+                    dataType: "JSON",
+                    success: function (funk) {
+                        $("#listexperience").trigger("click");
+                        alert("Kayıt başarıyla silindi");
+                    }
+                });
+            }
+        });
+    </script>
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>

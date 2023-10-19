@@ -1,0 +1,43 @@
+﻿@model WebSite.Areas.Writer.Models.UserEditViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Profil Düzenleme Paneli</h4>
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Adınız</label>
+                    @Html.TextBoxFor(x=> x.Name, new { @class = "form-control", @placeholder = "Ad", @required = "required", @type = "text"})
+                </div>
+                <div class="form-group">
+                    <label>Soyadınız</label>
+                    @Html.TextBoxFor(x=> x.SurName, new { @class = "form-control", @placeholder = "Soyad", @required = "required", @type = "text"})
+                </div>
+                <div class="form-group">
+                    <label>Şifreniz</label>
+                    @Html.TextBoxFor(x=> x.Password, new { @class = "form-control", @placeholder = "Şifre", @required = "required", @type = "password"})
+                </div>
+                <div class="form-group">
+                    <label>Şifre Tekrar</label>
+                    @Html.TextBoxFor(x=> x.PasswordConfirm, new { @class = "form-control", @placeholder = "Şifre Tekrar", @required = "required", @type = "password"})
+                </div>
+                <div class="form-group">
+                    <label>Kullanıcı Adınız</label>
+                    @Html.TextBoxFor(x=> x.UserName, new { @class = "form-control", @placeholder = "Kullanıcı Adı", @required = "required", @type = "text"})
+                </div>
+                <div class="form-group">
+                    <label>Resim Bilgileri</label>
+                    @Html.TextBoxFor(x=> x.Image, new { @class = "form-control file-upload-info", @placeholder = "Resim Seç", @required = "required", @type = "file"})
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+                <a href="/writer/dashboard/index" class="btn btn-light">İptal</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+

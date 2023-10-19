@@ -1,0 +1,46 @@
+﻿@model EntityLayer.Concrete.Portfolio
+@{
+    ViewData["Title"] = "PortfolioEdit";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Proje Düzenleme Paneli</h4>
+            @using (Html.BeginForm("PortfolioEdit", "Portfolio", FormMethod.Post))
+            {
+                @Html.HiddenFor(x=> x.PortfolioId)
+                <div class="form-group">
+                    <label>Portfolio Başlığı</label>
+                    @Html.TextBoxFor(x => x.Name, new {@class="form-control", @required="required"})
+                    @Html.ValidationMessageFor(x=> x.Name)
+                </div>
+                <div class="form-group">
+                    <label>Platform Görseli</label>
+                    @Html.TextBoxFor(x => x.Platform, new {@class="form-control"})
+                </div>
+                <div class="form-group">
+                    <label>Image Url</label>
+                    @Html.TextBoxFor(x => x.ImageURL, new {@class="form-control", @required="required"})
+                    @Html.ValidationMessageFor(x=> x.ImageURL)
+                </div>
+                <div class="form-group">
+                    <label>Image Url2</label>
+                    @Html.TextBoxFor(x => x.ImageURL2, new {@class="form-control", @required="required"})
+                    @Html.ValidationMessageFor(x=> x.ImageURL2)
+                </div>
+                <div class="form-group">
+                    <label>Ücret</label>
+                    @Html.TextBoxFor(x => x.Price, new {@class="form-control", @type = "number"})
+                </div>
+                <div class="form-group">
+                    <label>Tamamlanma Oranı</label>
+                    @Html.TextBoxFor(x => x.Value, new {@class="form-control", @type = "number"})
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+                <button class="btn btn-dark">İptal</button>
+            }
+        </div>
+    </div>
+</div>

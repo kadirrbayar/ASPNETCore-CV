@@ -1,0 +1,34 @@
+﻿@model EntityLayer.Concrete.SocialMedia
+
+@{
+    ViewData["Title"] = "SocialMediaEdit";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Deneyim Düzenleme Paneli</h4>
+            @using (Html.BeginForm("SocialMediaEdit", "SocialMedia", FormMethod.Post))
+            {
+                @Html.HiddenFor(x=> x.SocialMediaId)
+                <div class="form-group">
+                    <label>Sosyal Medya Adı:</label>
+                    @Html.TextBoxFor(x => x.Name, new {@class="form-control", @required="required"})
+                </div>
+                <div class="form-group">
+                    <label>URL:</label>
+                    @Html.TextBoxFor(x => x.Url, new {@class="form-control", @required="required"})
+                </div>
+                <div class="form-group">
+                    <label>Ikon URL:</label>
+                    @Html.TextBoxFor(x => x.Icon, new {@class="form-control", @required="required"})
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+                <button href="/socialmedia/index" class="btn btn-dark">İptal</button>
+            }
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+}
+
+<div class="col col-md-6">
+    <button type="button" class="btn btn-outline-success" id="getlist">Verileri Getir</button>
+</div>
+<br />
+
+<div class="row">
+</div>
+
+@section Scripts {
+    <script>
+        $("#getlist").click(function () {
+            $.ajax({
+                type: "get",
+                url: "/WriterUser/ListUser/",
+                contentType: "application/json",
+                dataType: "JSON",
+                success: function (r) 
+                {
+                    let users = JSON.parse(r)
+                    let htmlst = '<div class="col-lg-12 grid-margin stretch-card"><div class="card"><div class="card-body"><div class="table-responsive">';
+                    htmlst += "<table class=table><thead><tr><th>#</th><th> İsim Soyisim</th><th> Kullanıcı Adı </th><th> Email </th></tr></thead><tbody>";
+                    $.each(users, (index, value) => {
+                        htmlst += '<tr>';
+                        htmlst += '<td>' + value.Id + '</td>';
+                        htmlst += '<td>' + value.Name + '</td>';
+                        htmlst += '<td>' + value.UserName + '</td>';
+                        htmlst += '<td>' + value.Email + '</td>';
+                        htmlst += '</tr>';
+                    });
+                    htmlst += '</tbody>';
+                    htmlst += '</table>';
+                    htmlst += '</div></div></div></div>';
+                    $(".row").html(htmlst);
+                }
+            });
+        });
+    </script>
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>

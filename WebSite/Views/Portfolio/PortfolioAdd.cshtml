@@ -1,0 +1,51 @@
+﻿@model EntityLayer.Concrete.Portfolio
+
+@{
+    ViewData["Title"] = "PortfolioAdd";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Proje Ekleme Paneli</h4>
+            @using (Html.BeginForm("PortfolioAdd", "Portfolio", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label>Proje Başlığı</label>
+                    @Html.TextBoxFor(x => x.Name, new {@class="form-control", @required="required"})
+                    @Html.ValidationMessageFor(x=> x.Name)
+                </div>
+                <div class="form-group">
+                    <label>Platform Görseli</label>
+                    @Html.TextBoxFor(x => x.Platform, new {@class="form-control"})
+                </div>
+                <div class="form-group">
+                    <label>Image Url</label>
+                    @Html.TextBoxFor(x => x.ImageURL, new {@class="form-control", @required="required"})
+                    @Html.ValidationMessageFor(x=> x.Name)
+                </div>
+                <div class="form-group">
+                    <label>Image Url2</label>
+                    @Html.TextAreaFor(x => x.ImageURL2, new {@class="form-control", @required="required"})
+                    @Html.ValidationMessageFor(x=> x.Name)
+                </div>
+                <div class="form-group">
+                    <label>Project Url</label>
+                    @Html.TextAreaFor(x => x.ProjectUrl, new {@class="form-control", @required="required"})
+                    @Html.ValidationMessageFor(x=> x.Name)
+                </div>
+                <div class="form-group">
+                    <label>Ücret</label>
+                    @Html.TextAreaFor(x => x.Price, new {@class="form-control", @type="number"})
+                </div>
+                <div class="form-group">
+                    <label>Tamamlanma Oranı</label>
+                    @Html.TextAreaFor(x => x.Value, new {@class="form-control", @type="number"})
+                </div>
+                <button type="submit" class="btn btn-success">Kaydet</button>
+                <button class="btn btn-dark">İptal</button>
+            }
+        </div>
+    </div>
+</div>
