@@ -28,6 +28,20 @@ namespace WebSite.Controllers
             testimonialManager.TAdd(testimonial);
             return RedirectToAction("Index");
         }
+        
+        [HttpGet]
+        public IActionResult TestimonialEdit(int id)
+        {
+            var find = testimonialManager.get(id);
+            return View(find);
+        }
+
+        [HttpPost]
+        public IActionResult TestimonialEdit(Testimonial testimonial)
+        {
+            testimonialManager.TUpdate(testimonial);
+            return RedirectToAction("Index");
+        }
 
         public IActionResult TestimonialDelete(int id)
         {
@@ -36,10 +50,5 @@ namespace WebSite.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult TestimonialDetails(int id)
-        {
-            var values = testimonialManager.get(id);
-            return View(values);
-        }
     }
 }

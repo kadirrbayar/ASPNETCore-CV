@@ -4,11 +4,11 @@
 }
 
 <div class="col col-md-6">
-    <button type="button" class="btn btn-outline-success" id="getlist">Verileri Getir</button>
+    <button type="button" class="btn btn-outline-success" id="getlist">Kullanıcıları Getir</button>
 </div>
 <br />
 
-<div class="row">
+<div class="row" id="userdelete">
 </div>
 
 @section Scripts {
@@ -23,13 +23,14 @@
                 {
                     let users = JSON.parse(r)
                     let htmlst = '<div class="col-lg-12 grid-margin stretch-card"><div class="card"><div class="card-body"><div class="table-responsive">';
-                    htmlst += "<table class=table><thead><tr><th>#</th><th> İsim Soyisim</th><th> Kullanıcı Adı </th><th> Email </th></tr></thead><tbody>";
+                    htmlst += "<table class=table><thead><tr><th>#</th><th> İsim Soyisim</th><th> Kullanıcı Adı </th><th> Email </th><th> Sil </th></tr></thead><tbody>";
                     $.each(users, (index, value) => {
                         htmlst += '<tr>';
                         htmlst += '<td>' + value.Id + '</td>';
                         htmlst += '<td>' + value.Name + '</td>';
                         htmlst += '<td>' + value.UserName + '</td>';
                         htmlst += '<td>' + value.Email + '</td>';
+                        htmlst += '<td><button type="button" class="btn btn-outline-primary delete-user" data-id="' + value.Id + '">Sil</button></td>';
                         htmlst += '</tr>';
                     });
                     htmlst += '</tbody>';
@@ -38,6 +39,21 @@
                     $(".row").html(htmlst);
                 }
             });
+        });
+        $("#userdelete").on("click", ".delete-user", function () {
+            let id = $(this).data("id");
+            if (confirm("Bu kullanıcıyı silmek istediğinizden emin misiniz?")) {
+                $.ajax({
+                    type: "post",
+                    url: "/WriterUser/DeleteUser/" + id,
+                    contentType: "application/json",
+                    dataType: "JSON",
+                    success: function (funk) {
+                        $("#getlist").trigger("click");
+                        alert("Kullanıcı başarıyla silindi");
+                    }
+                });
+            }
         });
     </script>
 }

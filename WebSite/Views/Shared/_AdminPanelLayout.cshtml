@@ -13,7 +13,7 @@
                 <a class="sidebar-brand brand-logo" href="/adminpanel/index"><img src="~/assets/images/logo.svg" alt="logo" /></a>
                 <a class="sidebar-brand brand-logo-mini" href="/adminpanel/index"><img src="~/assets/images/logo-mini.svg" alt="logo" /></a>
             </div>
-            @await Html.PartialAsync("/Views/AdminPanel/AdminSideBar.cshtml")
+            @await Component.InvokeAsync("AdminSideBar")
         </nav>
         <div class="container-fluid page-body-wrapper">
             <nav class="navbar p-0 fixed-top d-flex flex-row">
@@ -27,7 +27,7 @@
                     <ul class="navbar-nav w-100">
                         <li class="nav-item w-100">
                             <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                                <input type="text" class="form-control" placeholder="Arama yap...">
+                                <input type="text" class="form-control" placeholder="Arama yap..." disabled>
                             </form>
                         </li>
                     </ul>
@@ -70,33 +70,29 @@
                                     </div>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a href="/Portfolio/Index"><p class ="p-3 mb-0 text-center">Tüm projeleri görüntüle.</p></a>
+                                <a href="/Portfolio/Index">
+                                    <p class="p-3 mb-0 text-center">Tüm projeleri görüntüle.</p>
+                                </a>
                             </div>
                         </li>
                         @await Component.InvokeAsync("AdminMessageList")
                         @await Component.InvokeAsync("AdminNotification")
                         <li class="nav-item dropdown">
-                            <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
-                                <div class="navbar-profile">
-                                    <img class="img-xs rounded-circle" src="~/assets/images/faces/face22.jpg" alt="">
-                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Kadir Bayar</p>
-                                    <i class="mdi mdi-menu-down d-none d-sm-block"></i>
-                                </div>
-                            </a>
+                            @await Component.InvokeAsync("AdminHead")
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
+                                <a class="dropdown-item preview-item" href="/Writer/Password/Index">
                                     <div class="preview-thumbnail">
                                         <div class="preview-icon bg-dark rounded-circle">
-                                            <i class="mdi mdi-settings text-success"></i>
+                                            <i class="mdi mdi-lock text-success"></i>
                                         </div>
                                     </div>
                                     <div class="preview-item-content">
-                                        <p class="preview-subject mb-1">Ayarlar</p>
+                                        <p class="preview-subject mb-1">Şifre Değiştir</p>
                                     </div>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
+                                <a class="dropdown-item preview-item" href="/Writer/Login/Logout">
                                     <div class="preview-thumbnail">
                                         <div class="preview-icon bg-dark rounded-circle">
                                             <i class="mdi mdi-logout text-danger"></i>

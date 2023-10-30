@@ -5,9 +5,10 @@
 }
 
 @await Component.InvokeAsync("FeatureStatictics")
-@await Component.InvokeAsync("DashboardStats")
 @await Component.InvokeAsync("ProjectList")
+@await Component.InvokeAsync("DashboardStats")
 <div class="row">
+@await Component.InvokeAsync("ContactMessageList")
 @await Component.InvokeAsync("PortfolioSlide")
-@await Component.InvokeAsync("ToDoList")
+@await Component.InvokeAsync("NoteList")
 </div>

@@ -18,6 +18,7 @@ namespace WebSite.Areas.Writer.ViewComponents
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
             ViewBag.v = values.ImageURL;
+            ViewBag.v1 = values.Name + ' ' + values.SurName;
             return View();
         }
     }

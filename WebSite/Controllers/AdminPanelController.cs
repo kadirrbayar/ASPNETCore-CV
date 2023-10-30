@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebSite.Controllers
@@ -11,10 +13,6 @@ namespace WebSite.Controllers
         public IActionResult Index()
         {
             return View();
-        }
-        public PartialViewResult AdminSideBar()
-        {
-            return PartialView();
         }
         public PartialViewResult AdminHead()
         {

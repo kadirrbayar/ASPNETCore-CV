@@ -16,6 +16,15 @@ namespace WebSite.Controllers
             return Json(values);
         }
 
+        [HttpPost]
+        public IActionResult DeleteUser(int id)
+        {
+            var result = userManager.get(id);
+            userManager.TDelete(result);
+            var values = JsonConvert.SerializeObject(result);
+            return Json(values);
+        }
+
         public IActionResult Index()
         {
             return View();

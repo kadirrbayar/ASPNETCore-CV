@@ -21,7 +21,7 @@ namespace BusinessLayer.Concrete
 
         public WriterUser get(int id)
         {
-            throw new NotImplementedException();
+            return _writerUserDal.get(id);
         }
 
         public List<WriterUser> GetAll()
@@ -41,7 +41,7 @@ namespace BusinessLayer.Concrete
 
         public void TDelete(WriterUser t)
         {
-            throw new NotImplementedException();
+            _writerUserDal.delete(t);
         }
 
         public void TUpdate(WriterUser t)

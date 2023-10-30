@@ -1,4 +1,5 @@
-﻿@using EntityLayer.Concrete
+﻿@using DataAccessLayer.Concrete;
+@using EntityLayer.Concrete
 @model List<WriterMessage>
 
 <li class="nav-item dropdown border-left">
@@ -10,18 +11,28 @@
         <h6 class="p-3 mb-0">Son Mesajlar</h6>
         @foreach (var item in Model)
         {
+            var imageUrl = "";
+            using (var db = new Context())
+            {
+                var image = db.Users.FirstOrDefault(x => x.Email == item.Sender);
+                @if (image != null)
+                {
+                    imageUrl = image.ImageURL;
+                }
+            }
+
             <div class="dropdown-divider"></div>
             <a class="dropdown-item preview-item" href="/message/MessageDetails/@item.MessageId">
                 <div class="preview-thumbnail">
-                    <img src="~/assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
+                    <img src="~/userimage/@imageUrl" alt="image" class="rounded-circle profile-pic">
                 </div>
                 <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1">@item.SenderName</p>
-                    <p class="text-muted mb-0"> @item.Date </p>
+                    <p class="preview-subject ellipsis mb-1">@item.SenderName bir mesaj gönderdi</p>
+                    <p class="text-muted mb-0">@item.Content.Substring(0, Math.Min(item.Content.Length, 8))...</p>
                 </div>
             </a>
         }
         <div class="dropdown-divider"></div>
-        <p class="p-3 mb-0 text-center">@ViewBag.v1 toplam mesaj.</p>
+        <p class="p-3 mb-0 text-center">@ViewBag.v1 toplam mesajınız bulunmaktadır.</p>
     </div>
 </li>

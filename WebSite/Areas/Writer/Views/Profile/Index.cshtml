@@ -18,14 +18,6 @@
                     @Html.TextBoxFor(x=> x.SurName, new { @class = "form-control", @placeholder = "Soyad", @required = "required", @type = "text"})
                 </div>
                 <div class="form-group">
-                    <label>Şifreniz</label>
-                    @Html.TextBoxFor(x=> x.Password, new { @class = "form-control", @placeholder = "Şifre", @required = "required", @type = "password"})
-                </div>
-                <div class="form-group">
-                    <label>Şifre Tekrar</label>
-                    @Html.TextBoxFor(x=> x.PasswordConfirm, new { @class = "form-control", @placeholder = "Şifre Tekrar", @required = "required", @type = "password"})
-                </div>
-                <div class="form-group">
                     <label>Kullanıcı Adınız</label>
                     @Html.TextBoxFor(x=> x.UserName, new { @class = "form-control", @placeholder = "Kullanıcı Adı", @required = "required", @type = "text"})
                 </div>
@@ -33,6 +25,7 @@
                     <label>Resim Bilgileri</label>
                     @Html.TextBoxFor(x=> x.Image, new { @class = "form-control file-upload-info", @placeholder = "Resim Seç", @required = "required", @type = "file"})
                 </div>
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                 <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
                 <a href="/writer/dashboard/index" class="btn btn-light">İptal</a>
             </form>

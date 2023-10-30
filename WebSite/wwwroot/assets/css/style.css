@@ -15525,26 +15525,29 @@ input:focus {
 @font-face {
   font-family: 'Rubik';
   font-weight: 300;
-  src: url("../fonts/Rubik/Rubik-Light.ttf");
+  src: url("~/fonts/Rubik/Rubik-Light.ttf");
   /* IE9 Compat Modes */ }
 
 @font-face {
-  font-family: 'Rubik';
-  font-weight: 400;
-  src: url("../fonts/Rubik/Rubik-Regular.ttf");
-  /* IE9 Compat Modes */ }
+    font-family: 'Rubik';
+    font-weight: 400;
+    src: url("~/fonts/Rubik/Rubik-Regular.ttf");
+    /* IE9 Compat Modes */
+}
 
 @font-face {
-  font-family: 'Rubik';
-  font-weight: 500;
-  src: url("../fonts/Rubik/Rubik-Medium.ttf");
-  /* IE9 Compat Modes */ }
+    font-family: 'Rubik';
+    font-weight: 500;
+    src: url("~/fonts/Rubik/Rubik-Medium.ttf");
+    /* IE9 Compat Modes */
+}
 
 @font-face {
-  font-family: 'Rubik';
-  font-weight: 700;
-  src: url("../fonts/Rubik/Rubik-Bold.ttf");
-  /* IE9 Compat Modes */ }
+    font-family: 'Rubik';
+    font-weight: 700;
+    src: url("~/fonts/Rubik/Rubik-Bold.ttf");
+    /* IE9 Compat Modes */
+}
 
 /* Backgrounds  */
 .bg-gradient-primary {
@@ -20195,20 +20198,24 @@ div.tagsinput {
 /* === Landing screens === */
 /* Auth */
 .auth.login-bg {
-  background: url("../images/auth/Login_bg.jpg");
-  background-size: cover; }
+    background: url("~/images/auth/Login_bg.jpg");
+    background-size: cover;
+}
 
 .auth .login-half-bg {
-  background: url("../images/auth/login-bg.jpg");
-  background-size: cover; }
+    background: url("~/images/auth/login-bg.jpg");
+    background-size: cover;
+}
 
 .auth.register-half-bg {
-  background: url("../images/auth/Login_bg2.jpg");
-  background-size: cover; }
+    background: url("~/images/auth/Login_bg2.jpg");
+    background-size: cover;
+}
 
 .auth.lock-full-bg {
-  background: url("../images/auth/lockscreen-bg.jpg");
-  background-size: cover; }
+    background: url("~/images/auth/lockscreen-bg.jpg");
+    background-size: cover;
+}
 
 .auth .lock-profile-img {
   width: 90px;

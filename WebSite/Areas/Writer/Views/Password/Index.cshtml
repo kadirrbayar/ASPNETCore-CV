@@ -1,0 +1,33 @@
+﻿@model WebSite.Areas.Writer.Models.UserPasswordEditModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Şifre Düzenleme Paneli</h4>
+            <form class="forms-sample" method="post">
+                <div class="form-group">
+                    <label>Mevcut Şifreniz</label>
+                    @Html.TextBoxFor(x=> x.OldPassword, new { @class = "form-control", @placeholder = "Mevcut Şifreniz", @required = "required", @type = "password"})
+                </div>
+                <div class="form-group">
+                    <label>Yeni Şifreniz</label>
+                    @Html.TextBoxFor(x=> x.Password, new { @class = "form-control", @placeholder = "Yeni Şifreniz", @required = "required", @type = "password"})
+                </div>
+                <div class="form-group">
+                    <label>Yeni Şifreniz Tekrar</label>
+                    @Html.TextBoxFor(x=> x.PasswordConfirm, new { @class = "form-control", @placeholder = "Yeni Şifreniz", @required = "required", @type = "password"})
+                </div>
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+                <a href="/writer/dashboard/index" class="btn btn-light">İptal</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
