@@ -2,7 +2,7 @@
 
 ## <a name="features">Tanıtım</a>
 
-Bu proje ASP.NET Core ile bir CV web sitesi projesidir. Proje katmanlı mimarı kullanılarak geliştirilmiştir.  
+Bu proje ASP.NET Core ile hazırlanmış bir CV web sitesi projesidir. Proje katmanlı mimarı kullanılarak geliştirilmiştir.  
 
 <b>Bu projede, 4 katman bulunmaktadır :</b>  
 - WebSite: Bu katman, kullanıcı arayüzünü ve sunucu tarafı mantığını içerir. MVC (Model-View-Controller) tasarım deseni kullanılarak geliştirilmiştir.  
