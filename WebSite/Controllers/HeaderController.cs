@@ -21,7 +21,7 @@ namespace WebSite.Controllers
         public IActionResult Index(Feature feature)
         {
             featureManager.TUpdate(feature);
-            return RedirectToAction("Index", "Default");
+            return RedirectToAction("Index", "Adminpanel");
         }
     }
 }
