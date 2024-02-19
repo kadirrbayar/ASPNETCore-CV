@@ -35,7 +35,13 @@ Bu projede, Code First yaklaşımı kullanılmıştır. Code First, veritabanı 
 ### <a name="images">Görseller</a>
 
 <p align="left">
-  <img src="">
+  <img src="https://telegra.ph/file/7b557e3a972e4e6617400.png">
+  <img src="https://telegra.ph/file/37fa27836732860ebfb66.png">
+  <img src="https://telegra.ph/file/f6283033bc639504649e3.png">
+  <img src="https://telegra.ph/file/ebece9ad29057a4cc5fba.png">
+  <img src="https://telegra.ph/file/d485581b84acfd3e33313.png">
+  <img src="https://telegra.ph/file/26ad68c7849f9d2a7e296.png">
+  <img src="https://telegra.ph/file/c24afacd1e87d55bc98f5.png">
 </p>
 
 ## <a name="license">Lisans</a>
